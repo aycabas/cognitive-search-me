@@ -2,6 +2,8 @@
 
 This app template is a search-based [message extension](https://docs.microsoft.com/microsoftteams/platform/messaging-extensions/what-are-messaging-extensions?tabs=nodejs) that allows users to search an external system and share results through the compose message area of the Microsoft Teams client. You can now build and run your search-based message extensions in Teams, Outlook for Windows desktop and web experiences.
 
+![vectorsearch](https://github.com/aycabas/cognitive-search-me/assets/36196437/9702b24c-f57e-481a-83cc-9300925a798a)
+
 ## Get started with the template
 
 > **Prerequisites**
@@ -35,7 +37,7 @@ This app template is a search-based [message extension](https://docs.microsoft.c
    node src/embeddings-setup.js
    ```
 
-### Debug the message extension on Teams
+### Debug message extension on Teams
 1. Go to **env** folder in your project root and rename `.env.local.user.sample` to `.env.local.user`. Also rename `.env.local.sample` to `.env.local` and replace the the following environment variables with your Azure OpenAI and Cognitive Search variables:
    ```
    AZURE_OPENAI_SERVICE_NAME=
@@ -55,9 +57,6 @@ This app template is a search-based [message extension](https://docs.microsoft.c
 7. To test out Hybrid search with vector and semantic, go to `src > searchApp.js` and replace `doPureVectorSearch` in line 15 with `doSemanticHybridSearch`. Search for "Scalable storage solutions" and observe refined answer in response.
 
 **Congratulations**! You are running an application that can now search npm registries in Teams and Outlook.
-
-![vectorsearch](https://github.com/aycabas/cognitive-search-me/assets/36196437/9702b24c-f57e-481a-83cc-9300925a798a)
-
 
 ## What's included in the template
 
