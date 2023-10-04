@@ -1,4 +1,4 @@
-# Overview of Custom Search Results template
+# Message Extension with Vector Search (Azure Cognitive Search) and Azure OpenAI
 
 This app template is a search-based [message extension](https://docs.microsoft.com/microsoftteams/platform/messaging-extensions/what-are-messaging-extensions?tabs=nodejs) that allows users to search an external system and share results through the compose message area of the Microsoft Teams client. You can now build and run your search-based message extensions in Teams, Outlook for Windows desktop and web experiences.
 
