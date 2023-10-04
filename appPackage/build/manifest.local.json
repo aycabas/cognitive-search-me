@@ -1,0 +1,59 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.16",
+    "version": "1.0.0",
+    "id": "2d3dd158-e133-4194-b0fa-263ed358443a",
+    "packageName": "com.microsoft.teams.extension",
+    "developer": {
+        "name": "Teams App, Inc.",
+        "websiteUrl": "https://www.example.com",
+        "privacyUrl": "https://www.example.com/termofuse",
+        "termsOfUseUrl": "https://www.example.com/privacy"
+    },
+    "icons": {
+        "color": "color.png",
+        "outline": "outline.png"
+    },
+    "name": {
+        "short": "cognitive-search-me-local",
+        "full": "full name for cognitive-search-me"
+    },
+    "description": {
+        "short": "short description of cognitive-search-me",
+        "full": "full description of cognitive-search-me"
+    },
+    "accentColor": "#FFFFFF",
+    "bots": [],
+    "composeExtensions": [
+        {
+            "botId": "5b9f2b0b-f0c8-41cd-9b87-86a312bf3229",
+            "commands": [
+                {
+                    "id": "searchQuery",
+                    "context": [
+                        "compose",
+                        "commandBox"
+                    ],
+                    "description": "Test command to run query",
+                    "title": "Search",
+                    "type": "query",
+                    "parameters": [
+                        {
+                            "name": "searchQuery",
+                            "title": "Search Query",
+                            "description": "Your search query",
+                            "inputType": "text"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "configurableTabs": [],
+    "staticTabs": [],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "validDomains": []
+}
