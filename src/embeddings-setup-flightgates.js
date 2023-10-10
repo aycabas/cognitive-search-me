@@ -67,7 +67,7 @@ async function generateDocumentEmbeddings() {
   
       outputData.push({
         ...item,
-        GaterNameVector: GateNameEmbeddings,
+        GateNameVector: GateNameEmbeddings,
         TerminalVector: TerminalEmbeddings,
         AirlineVector: AirlineEmbeddings
       });
