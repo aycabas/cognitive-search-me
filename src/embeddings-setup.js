@@ -10,14 +10,14 @@ const textData = "./data/text-sample.json";
 const docsVectors = "./output/docVectors.json";
 const queryVector = "./output/queryVector.json";
 //Set Azure Cognitive Search parameters from environment variables
-const searchServiceEndpoint = "<your-azure-search-service-endpoint>";
-const searchServiceApiKey = "<your-azure-search-service-api-key>";
-const searchIndexName = "<your-azure-search-index-name>";
+const searchServiceEndpoint =config.AZURE_SEARCH_ENDPOINT;
+const searchServiceApiKey = config.AZURE_SEARCH_ADMIN_KEY;
+const searchIndexName = config.AZURE_SEARCH_INDEX_NAME;
 // Set Azure OpenAI API parameters from environment variables
-const apiKey = "<your-azure-openai-api-key>";
-const apiBase = `<your-azure-openai-api-endpoint>`;
-const apiVersion = "2023-05-15";
-const deploymentName = "<your-azure-openai-deployment-name>";
+const apiKey = config.AZURE_OPENAI_API_KEY;
+const apiBase = config.AZURE_SEARCH_ENDPOINT;
+const apiVersion = config.AZURE_OPENAI_API_VERSION;
+const deploymentName = config.AZURE_OPENAI_DEPLOYMENT_NAME;
 
 async function setup() {
   // Create Azure Cognitive Search index
