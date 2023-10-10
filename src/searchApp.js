@@ -16,10 +16,10 @@ class SearchApp extends TeamsActivityHandler {
     const attachments = [];
 
     for await (const result of response.results) {
-      console.log(`Title: ${result.document.title}`);
+      console.log(`Gate Name: ${result.document.GateName}`);
       console.log(`Score: ${result.score}`);
-      console.log(`Content: ${result.document.content}`);
-      console.log(`Category: ${result.document.category}`);
+      console.log(`Terminal: ${result.document.Terminal}`);
+      console.log(`Airline: ${result.document.Airline}`);
       console.log(`\n`);
       const adaptiveCard = CardFactory.adaptiveCard({
         $schema: "http://adaptivecards.io/schemas/adaptive-card.json",
@@ -28,19 +28,19 @@ class SearchApp extends TeamsActivityHandler {
         body: [
           {
             type: "TextBlock",
-            text: `${result.document.title}`,
+            text: `${result.document.GateName}`,
             wrap: true,
             size: "Large",
           },
           {
             type: "TextBlock",
-            text: `${result.document.content}`,
+            text: `${result.document.Terminal}`,
             wrap: true,
             size: "Small",
           },
         ],
       });
-      const preview = CardFactory.heroCard(result.document.title, result.document.content, ['https://icon-library.com/images/cloud-icon-png/cloud-icon-png-12.jpg']);
+      const preview = CardFactory.heroCard(result.document.GateName, result.document.Terminal, ['https://icon-library.com/images/cloud-icon-png/cloud-icon-png-12.jpg']);
       const attachment = { ...adaptiveCard, preview };
       attachments.push(attachment);
     }

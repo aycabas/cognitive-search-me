@@ -26,9 +26,9 @@ async function doPureVectorSearch(query) {
     vector: {
       value: await generateEmbeddings(query),
       kNearestNeighborsCount: 3,
-      fields: ["contentVector"],
+      fields: ["GateNameVector"],
     },
-    select: ["title", "content", "category"],
+    select: ["GateName", "Terminal", "Airline", "CommentsNotes"],
   });
   return response;
 }
@@ -51,17 +51,17 @@ async function doPureVectorSearchMultilingual(query) {
     vector: {
       value: await generateEmbeddings(query),
       kNearestNeighborsCount: 3,
-      fields: ["contentVector"],
+      fields: ["GateNameVector"],
     },
-    select: ["title", "content", "category"],
+    select: ["GateName", "Terminal", "Airline", "CommentsNotes"],
   });
 
   console.log(`\nPure vector search (multilingual) results:`);
   for await (const result of response.results) {
-    console.log(`Title: ${result.document.title}`);
+    console.log(`Gate Name: ${result.document.GateName}`);
     console.log(`Score: ${result.score}`);
-    console.log(`Content: ${result.document.content}`);
-    console.log(`Category: ${result.document.category}`);
+    console.log(`Terminal: ${result.document.Terminal}`);
+    console.log(`Airline: ${result.document.Airline}`);
     console.log(`\n`);
   }
 
@@ -85,9 +85,9 @@ async function doCrossFieldVectorSearch(query) {
     vector: {
       value: await generateEmbeddings(query),
       kNearestNeighborsCount: 3,
-      fields: ["titleVector", "contentVector"],
+      fields: ["GateNameVector", "TerminalVector", "AirlineVector"],
     },
-    select: ["title", "content", "category"],
+    select: ["GateName", "Terminal", "Airline", "CommentsNotes"],
   });
 
     return response;
@@ -110,10 +110,10 @@ async function doVectorSearchWithFilter(query) {
     vector: {
       value: await generateEmbeddings(query),
       kNearestNeighborsCount: 3,
-      fields: ["contentVector"],
+      fields: ["TerminalVector"],
     },
-    filter: "category eq 'Developer Tools'",
-    select: ["title", "content", "category"],
+    filter: "Terminal eq 'Terminal B'",
+    select: ["GateName", "Terminal", "Airline", "CommentsNotes"],
   });
 
     return response;
@@ -136,18 +136,18 @@ async function doHybridSearch(query) {
     vector: {
       value: await generateEmbeddings(query),
       kNearestNeighborsCount: 3,
-      fields: ["contentVector"],
+      fields: ["TerminalVector"],
     },
-    select: ["title", "content", "category"],
+    select: ["GateName", "Terminal", "Airline", "CommentsNotes"],
     top: 3,
   });
 
   console.log(`\nHybrid search results:`);
   for await (const result of response.results) {
-    console.log(`Title: ${result.document.title}`);
+    console.log(`Gate Name: ${result.document.GateName}`);
     console.log(`Score: ${result.score}`);
-    console.log(`Content: ${result.document.content}`);
-    console.log(`Category: ${result.document.category}`);
+    console.log(`Terminal: ${result.document.Terminal}`);
+    console.log(`Airline: ${result.document.Airline}`);
     console.log(`\n`);
   }
 
@@ -171,9 +171,9 @@ async function doSemanticHybridSearch(query) {
     vector: {
       value: await generateEmbeddings(query),
       kNearestNeighborsCount: 3,
-      fields: ["contentVector"],
+      fields: ["TerminalVector"],
     },
-    select: ["title", "content", "category"],
+    select: ["GateName", "Terminal", "Airline", "CommentsNotes"],
     queryType: "semantic",
     queryLanguage: "en-us",
     semanticConfiguration: "my-semantic-config",
@@ -194,9 +194,10 @@ async function doSemanticHybridSearch(query) {
   }
 
   for await (const result of response.results) {
-    console.log(`Title: ${result.document.title}`);
-    console.log(`Content: ${result.document.content}`);
-    console.log(`Category: ${result.document.category}`);
+    console.log(`Gate Name: ${result.document.GateName}`);
+    console.log(`Score: ${result.score}`);
+    console.log(`Terminal: ${result.document.Terminal}`);
+    console.log(`Airline: ${result.document.Airline}`);
 
     if (result.captions) {
       const caption = result.captions[0];
